@@ -14,7 +14,7 @@ public class DbUtil {
         else {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                String databaseUrl = "jdbc:mysql://thegamesdb-database:3306/thegamesdb";
+                String databaseUrl = "jdbc:mysql://localhost:3306/thegamesdb";
                 String databaseUser = "root";
                 String databasePass = "password";
 
