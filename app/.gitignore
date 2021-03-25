@@ -1,4 +1,4 @@
-/target/
+#/target/
 UserSignup.war
 UserSignup.iml
 .DS_Store 
