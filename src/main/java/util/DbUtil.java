@@ -9,7 +9,7 @@ public class DbUtil {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-        if (connection != null)
+        if (connection != null && !connection.isClosed())
             return connection;
         else {
             try {
