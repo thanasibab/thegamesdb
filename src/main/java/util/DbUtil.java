@@ -14,9 +14,9 @@ public class DbUtil {
                 return connection;
             else{
                 Class.forName("com.mysql.jdbc.Driver");
-                String databaseUrl = "jdbc:mysql://thegamesdb-sql.mysql.database.azure.com:3306/thegamesdb";
-                String databaseUser = "thegames@thegamesdb-sql";
-                String databasePass = "gamesdb1!";
+                String databaseUrl = System.getenv("DB_URL");
+                String databaseUser = System.getenv("DB_USER");
+                String databasePass = System.getenv("DB_PASS");
 
                 connection = DriverManager.getConnection(databaseUrl, databaseUser, databasePass);
             }
