@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  database:
+    image: thanasibab/thegamesdb-database
+    # set default mysql root password, change as needed
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASS}"
+    # Expose port 3306 to host. Not for the application but
+    # handy to inspect the database from the host machine.
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+
+  webserver:
+    image: thanasibab/thegamesdb-webserver
+    links:
+      - database:thegamesdb-database
+    # open ports for tomcat
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
