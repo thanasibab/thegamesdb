@@ -7,4 +7,4 @@ ADD  docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
 # Default values for passwords and database name. Can be overridden on docker run
 # ENV MYSQL_ROOT_PASSWORD=my-secret-pw # Not defaulted for security reasons!
 ENV MYSQL_DATABASE=thegamesdb
-ENV MYSQL_PASSWORD=password
+ENV MYSQL_PASSWORD=${DB_PASS}

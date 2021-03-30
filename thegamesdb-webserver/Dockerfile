@@ -21,6 +21,8 @@ RUN mkdir $CATALINA_HOME/webapps/TheGamesDb
 ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"
 
+COPY ./app/target/TheGamesDb /usr/local/tomcat/webapps/TheGamesDb
+
 # start tomcat7 with remote debugging
 EXPOSE 8080
 CMD ["run.sh"]

@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+
+  webserver:
+    build:
+      context: ./thegamesdb-webserver
+    image: thegamesdb-webserver
+    # mount point for application in tomcat
+    volumes:
+      - ./app/target/TheGamesDb:/usr/local/tomcat/webapps/TheGamesDb
+    # open ports for tomcat and remote debugging
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env

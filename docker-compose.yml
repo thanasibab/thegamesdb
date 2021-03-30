@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
 
@@ -8,20 +8,22 @@ services:
     image: thegamesdb-database
     # set default mysql root password, change as needed
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: "${DB_PASS}"
     # Expose port 3306 to host. Not for the application but
     # handy to inspect the database from the host machine.
     ports:
       - "3306:3306" 
     #restart: always
+    env_file:
+      - .env
 
   webserver:
     build: 
       context: ./thegamesdb-webserver
     image: thegamesdb-webserver
     # mount point for application in tomcat
-    volumes:
-      - ./app/target/TheGamesDb:/usr/local/tomcat/webapps/TheGamesDb
+    # volumes:
+    #   - ./thegamesdb-webserver/app/target/TheGamesDb:/usr/local/tomcat/webapps/TheGamesDb
     links:
       - database:thegamesdb-database
     # open ports for tomcat and remote debugging
@@ -29,5 +31,7 @@ services:
       - "8080:8080" 
       - "8000:8000"
     #restart: always
+    env_file:
+      - .env
 
  
