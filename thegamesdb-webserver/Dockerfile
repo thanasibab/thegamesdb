@@ -3,11 +3,13 @@ FROM tomcat:alpine
 
 # tomcat-users.xml sets up user accounts for the Tomcat manager GUI
 # and script access for Maven deployments
+ADD tomcat/server.xml $CATALINA_HOME/conf/
 ADD tomcat/tomcat-users.xml $CATALINA_HOME/conf/
 ADD tomcat/context.xml $CATALINA_HOME/webapps/manager/META-INF/
 
 # ADD tomcat/catalina.sh $CATALINA_HOME/bin/
 ADD tomcat/run.sh $CATALINA_HOME/bin/run.sh
+
 RUN chmod +x $CATALINA_HOME/bin/run.sh
 
 # add MySQL JDBC driver jar
